@@ -6,7 +6,7 @@ Allows to include blade template with relative path based on current view.
 Require this package with composer.
 
 ```shell
-composer require lfukumori/laravel-blade-include-relative
+composer require fukumori/laravel-blade-include-relative
 
 ```
 
