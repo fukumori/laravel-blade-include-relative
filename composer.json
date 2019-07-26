@@ -1,5 +1,5 @@
 {
-    "name": "lfukumori/laravel-blade-include-relative",
+    "name": "fukumori/laravel-blade-include-relative",
     "description": "Allows to include blade template with relative path based on current view.",
     "keywords": ["laravel", "blade", "relative"],
     "license": "MIT",
