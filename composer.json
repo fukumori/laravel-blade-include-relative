@@ -5,7 +5,7 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Levi Fukumori",
+            "name": "Levi Fukumori",s
             "email": "levi@fukumori.com.br"
         }
     ],
@@ -14,16 +14,16 @@
     },
     "autoload": {
         "psr-4": {
-            "LFukumori\\BladeIncludeRelative\\": "src/"
+            "Fukumori\\BladeIncludeRelative\\": "src/"
         }
     },
     "extra": {
         "branch-alias": {
-            "master": "5.8-dev"
+            "master": "5.5"
         },
         "laravel": {
             "providers": [
-                "LFukumori\\BladeIncludeRelative\\ServiceProvider"
+                "Fukumori\\BladeIncludeRelative\\ServiceProvider"
             ]
         }
     },

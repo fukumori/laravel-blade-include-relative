@@ -1,6 +1,6 @@
 <?php
 
-namespace LFukumori\BladeIncludeRelative;
+namespace Fukumori\BladeIncludeRelative;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -15,7 +15,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             $bladeCompiler->directive('each', function ($expression) use ($bladeCompiler) {
                 $path = dirname($bladeCompiler->getPath());
 
-                return "<?php \$__env->addLocation('{$path}'); echo \$__env->renderEach({$expression}); ?>";
+                return "<?php \$__env->getFinder()->flush(); \$__env->getFinder()->prependLocation('{$path}'); echo \$__env->renderEach({$expression}); ?>";
             });
             $bladeCompiler->directive('include', function ($expression) use ($bladeCompiler) {
                 if (\Illuminate\Support\Str::startsWith($expression, '(')) {
@@ -23,7 +23,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
                 }
                 $path = dirname($bladeCompiler->getPath());
 
-                return "<?php \$__env->addLocation('{$path}'); echo \$__env->make({$expression}, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>";
+                return "<?php \$__env->getFinder()->flush(); \$__env->getFinder()->prependLocation('{$path}'); echo \$__env->make({$expression}, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>";
             });
             $bladeCompiler->directive('includeIf', function ($expression) use ($bladeCompiler) {
                 if (\Illuminate\Support\Str::startsWith($expression, '(')) {
@@ -31,7 +31,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
                 }
                 $path = dirname($bladeCompiler->getPath());
 
-                return "<?php if (\$__env->exists({$expression})) { \$__env->addLocation('{$path}'); echo \$__env->make({$expression}, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); } ?>";
+                return "<?php \$__env->getFinder()->flush(); if (\$__env->exists({$expression})) { \$__env->getFinder()->prependLocation('{$path}'); echo \$__env->make({$expression}, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); } ?>";
             });
             $bladeCompiler->directive('includeWhen', function ($expression) use ($bladeCompiler) {
                 if (\Illuminate\Support\Str::startsWith($expression, '(')) {
@@ -39,7 +39,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
                 }
                 $path = dirname($bladeCompiler->getPath());
 
-                return "<?php \$__env->addLocation('{$path}'); echo \$__env->renderWhen($expression, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path'])); ?>";
+                return "<?php \$__env->getFinder()->flush(); \$__env->getFinder()->prependLocation('{$path}'); echo \$__env->renderWhen($expression, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path'])); ?>";
             });
             $bladeCompiler->directive('includeFirst', function ($expression) use ($bladeCompiler) {
                 if (\Illuminate\Support\Str::startsWith($expression, '(')) {
@@ -47,7 +47,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
                 }
                 $path = dirname($bladeCompiler->getPath());
 
-                return "<?php \$__env->addLocation('{$path}'); echo \$__env->first({$expression}, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>";
+                return "<?php \$__env->getFinder()->flush(); \$__env->getFinder()->prependLocation('{$path}'); echo \$__env->first({$expression}, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>";
             });
         });
     }
