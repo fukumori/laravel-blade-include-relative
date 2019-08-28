@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "LFukumori\\BladeIncludeRelative\\": "src/"
+            "Fukumori\\BladeIncludeRelative\\": "src/"
         }
     },
     "extra": {
@@ -23,7 +23,7 @@
         },
         "laravel": {
             "providers": [
-                "LFukumori\\BladeIncludeRelative\\ServiceProvider"
+                "Fukumori\\BladeIncludeRelative\\ServiceProvider"
             ]
         }
     },

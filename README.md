@@ -60,3 +60,7 @@ See the magic appear
 <div>Included view with: each1 partials.included-view.</div>
 <div>Included view with: each2 partials.included-view.</div>
 ```
+
+## Know Issues
+
+If a view was previously loaded with a name and does not exist in the current paths, the last valid view with that name will be include.
